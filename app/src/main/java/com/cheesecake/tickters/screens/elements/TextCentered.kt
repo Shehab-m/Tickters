@@ -21,6 +21,6 @@ fun TextCentered(
         textAlign = TextAlign.Center,
         maxLines = 3,
         overflow = TextOverflow.Ellipsis,
-        modifier = modifier.padding(top = 24.dp, end = 46.dp, start = 46.dp)
+        modifier = modifier.padding(top = 16.dp, end = 46.dp, start = 46.dp)
     )
 }
