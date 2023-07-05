@@ -1,13 +1,10 @@
-package com.cheesecake.tickters.screens.elements
+package com.cheesecake.tickters.screens.composable
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color.Companion.Gray
 import androidx.compose.ui.unit.sp
 import com.cheesecake.tickters.ui.theme.TextGrey
 

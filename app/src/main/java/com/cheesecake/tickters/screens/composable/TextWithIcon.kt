@@ -1,4 +1,4 @@
-package com.cheesecake.tickters.screens.elements
+package com.cheesecake.tickters.screens.composable
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
@@ -12,7 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
-import com.cheesecake.tickters.ui.theme.IconClock
+import com.cheesecake.tickters.ui.theme.MediumGrey
 import com.cheesecake.tickters.ui.theme.OnBackgroundColor
 import com.cheesecake.tickters.ui.theme.DarkGrey
 
@@ -50,7 +50,7 @@ private fun IconText(
         modifier = Modifier
             .padding(start = 8.dp)
             .size(16.dp),
-        tint = IconClock,
+        tint = MediumGrey,
     )
 }
 

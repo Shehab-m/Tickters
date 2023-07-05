@@ -1,11 +1,11 @@
 package com.cheesecake.tickters.viewmodel
 
-import com.cheesecake.tickters.viewmodel.state.MovieUIState
+import com.cheesecake.tickters.viewmodel.state.MovieDetailsUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.update
 
 @HiltViewModel
-class MovieViewModel : BaseViewModel<MovieUIState>(MovieUIState()) {
+class MovieDetailsViewModel : BaseViewModel<MovieDetailsUIState>(MovieDetailsUIState()) {
     private val items = listOf(
         "https://user-images.githubusercontent.com/90576202/250568264-101026cf-20f9-4f13-8235-b7674664ddc5.png",
         "https://user-images.githubusercontent.com/90576202/250568264-101026cf-20f9-4f13-8235-b7674664ddc5.png",
@@ -19,6 +19,7 @@ class MovieViewModel : BaseViewModel<MovieUIState>(MovieUIState()) {
     )
 
     private val tags = listOf("Fantasy", "Adventure")
+
 
     init {
         _state.update {

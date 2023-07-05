@@ -3,14 +3,19 @@ package com.cheesecake.tickters
 import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
-import androidx.compose.runtime.SideEffect
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.core.view.WindowCompat
-import com.cheesecake.tickters.screens.MovieScreen
+import com.cheesecake.tickters.screens.BookingScreen
+import com.cheesecake.tickters.screens.MovieDetailsScreen
+import com.cheesecake.tickters.ui.theme.TicktersTheme
+import com.cheesecake.tickters.viewmodel.state.MovieDetailsUIState
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 class MainActivity : ComponentActivity() {
@@ -26,7 +31,14 @@ class MainActivity : ComponentActivity() {
             systemUiController.setStatusBarColor(
                 color = Color.Transparent, darkIcons = false
             )
-            MovieScreen()
+            TicktersTheme {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    BookingScreen()
+                }
+            }
         }
     }
 }

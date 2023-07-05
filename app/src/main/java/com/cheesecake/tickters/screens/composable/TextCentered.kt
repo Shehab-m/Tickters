@@ -1,4 +1,4 @@
-package com.cheesecake.tickters.screens.elements
+package com.cheesecake.tickters.screens.composable
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
