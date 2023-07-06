@@ -12,8 +12,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.cheesecake.tickters.R
 import com.cheesecake.tickters.ui.theme.Orange
-import com.example.tickets.R
 
 @Composable
 fun PrimaryButton(text: String,modifier: Modifier = Modifier) {

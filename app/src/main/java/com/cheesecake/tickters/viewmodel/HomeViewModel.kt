@@ -2,9 +2,12 @@ package com.cheesecake.tickters.viewmodel
 
 import com.cheesecake.tickters.viewmodel.model.Movie
 import com.cheesecake.tickters.viewmodel.state.HomeUIState
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.update
+import javax.inject.Inject
 
-class HomeViewModel : BaseViewModel<HomeUIState>(HomeUIState()) {
+@HiltViewModel
+class HomeViewModel @Inject constructor() : BaseViewModel<HomeUIState>(HomeUIState()) {
 
     init {
         _state.update {

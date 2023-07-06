@@ -4,9 +4,10 @@ import com.cheesecake.tickters.viewmodel.state.BookingUIState
 import com.cheesecake.tickters.viewmodel.state.DateUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.update
+import javax.inject.Inject
 
 @HiltViewModel
-class BookingViewModel : BaseViewModel<BookingUIState>(BookingUIState()) {
+class BookingViewModel @Inject constructor(): BaseViewModel<BookingUIState>(BookingUIState()) {
 
     private val dateItems = listOf(
         DateUIState("17", "sun"),

@@ -3,7 +3,6 @@ package com.cheesecake.tickters.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -26,7 +25,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.cheesecake.tickters.R
 import com.cheesecake.tickters.screens.composable.ButtonExit
 import com.cheesecake.tickters.screens.composable.CardDateItem
 import com.cheesecake.tickters.screens.composable.CardTimeItem
@@ -40,7 +41,6 @@ import com.cheesecake.tickters.ui.theme.TextGrey
 import com.cheesecake.tickters.ui.theme.White
 import com.cheesecake.tickters.viewmodel.BookingViewModel
 import com.cheesecake.tickters.viewmodel.state.BookingUIState
-import com.example.tickets.R
 
 @Composable
 fun BookingScreen(
@@ -52,66 +52,70 @@ fun BookingScreen(
 
 @Composable
 fun BookingContent(state: BookingUIState) {
-    Column(
+    ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
             .background(Black)
     ) {
+        val (bottomSheet, imageBanner, rowGuide, rowSeats, buttonExit) = createRefs()
 
-        Box(modifier = Modifier.weight(2f)) {
-
-            Column(
-                modifier = Modifier.fillMaxSize()
-            ) {
-
-                Image(
-                    painter = painterResource(id = R.drawable.img_1),
-                    contentDescription = "Cinema",
-                    contentScale = ContentScale.FillBounds,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 58.dp)
-                        .fillMaxHeight(.1f)
-                )
-
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 16.dp, end = 20.dp, start = 20.dp),
-                    horizontalArrangement = Arrangement.SpaceAround
-                ) {
-                    ColumnSeats(rowsNum = 5, rotation = 10f)
-                    ColumnSeats(rowsNum = 5, modifier = Modifier.padding(top = 9.dp))
-                    ColumnSeats(rowsNum = 5, rotation = -10f)
+        Image(
+            painter = painterResource(id = R.drawable.img_1),
+            contentDescription = "Cinema",
+            contentScale = ContentScale.FillBounds,
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight(.1f)
+                .constrainAs(imageBanner) {
+                    top.linkTo(parent.top, 58.dp)
                 }
+        )
 
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 16.dp),
-                    horizontalArrangement = Arrangement.SpaceAround
-                ) {
-                    RowIconText(text = "Available", iconColor = White)
-                    RowIconText(text = "Taken", iconColor = MediumGrey)
-                    RowIconText(text = "Selected", iconColor = Orange)
+        Row(
+            horizontalArrangement = Arrangement.SpaceAround,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 16.dp, end = 20.dp, start = 20.dp)
+                .constrainAs(rowSeats) {
+                    top.linkTo(imageBanner.bottom)
+                    bottom.linkTo(rowGuide.top)
                 }
-
-
-            }
-            ButtonExit(modifier = Modifier.padding(top = 24.dp, start = 24.dp))
-
+        ) {
+            ColumnSeats(rowsNum = 5, rotation = 10f)
+            ColumnSeats(rowsNum = 5, modifier = Modifier.padding(top = 9.dp))
+            ColumnSeats(rowsNum = 5, rotation = -10f)
         }
 
 
 
+
+
+
+        Row(
+            horizontalArrangement = Arrangement.SpaceAround,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 16.dp)
+                .constrainAs(rowGuide) {
+                    bottom.linkTo(bottomSheet.top)
+                    top.linkTo(rowSeats.bottom)
+                }
+        ) {
+            RowIconText(text = "Available", iconColor = White)
+            RowIconText(text = "Taken", iconColor = MediumGrey)
+            RowIconText(text = "Selected", iconColor = Orange)
+        }
+
         Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Top,
             modifier = Modifier
                 .fillMaxWidth()
                 .clip(shape = RoundedCornerShape(topEnd = 24.dp, topStart = 24.dp))
                 .background(White)
-                .weight(1f),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Top
+                .constrainAs(bottomSheet) {
+                    bottom.linkTo(parent.bottom)
+                }
         ) {
 
             LazyRow(
@@ -153,6 +157,10 @@ fun BookingContent(state: BookingUIState) {
 
         }
 
+        ButtonExit(modifier = Modifier.constrainAs(buttonExit) {
+            top.linkTo(parent.top, 32.dp)
+            start.linkTo(parent.start, 24.dp)
+        })
 
     }
 

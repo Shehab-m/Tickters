@@ -3,9 +3,10 @@ package com.cheesecake.tickters.viewmodel
 import com.cheesecake.tickters.viewmodel.state.MovieDetailsUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.update
+import javax.inject.Inject
 
 @HiltViewModel
-class MovieDetailsViewModel : BaseViewModel<MovieDetailsUIState>(MovieDetailsUIState()) {
+class MovieDetailsViewModel  @Inject constructor(): BaseViewModel<MovieDetailsUIState>(MovieDetailsUIState()) {
     private val items = listOf(
         "https://user-images.githubusercontent.com/90576202/250568264-101026cf-20f9-4f13-8235-b7674664ddc5.png",
         "https://user-images.githubusercontent.com/90576202/250568264-101026cf-20f9-4f13-8235-b7674664ddc5.png",

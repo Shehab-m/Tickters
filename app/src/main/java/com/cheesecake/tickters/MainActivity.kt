@@ -13,11 +13,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.core.view.WindowCompat
 import com.cheesecake.tickters.screens.BookingScreen
-import com.cheesecake.tickters.screens.MovieDetailsScreen
+import com.cheesecake.tickters.screens.MainScreen
 import com.cheesecake.tickters.ui.theme.TicktersTheme
-import com.cheesecake.tickters.viewmodel.state.MovieDetailsUIState
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     @RequiresApi(Build.VERSION_CODES.R)
@@ -36,7 +37,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    BookingScreen()
+                   MainScreen()
                 }
             }
         }

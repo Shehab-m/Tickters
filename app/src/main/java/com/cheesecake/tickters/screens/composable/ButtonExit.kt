@@ -10,9 +10,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.cheesecake.tickters.R
 import com.cheesecake.tickters.ui.theme.DarkGrey
 import com.cheesecake.tickters.ui.theme.OnBackgroundColor
-import com.example.tickets.R
 
 @Composable
 fun ButtonExit(modifier: Modifier = Modifier) {

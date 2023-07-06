@@ -9,8 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.cheesecake.tickters.R
 import com.cheesecake.tickters.ui.theme.MediumGrey
-import com.example.tickets.R
 
 @Composable
 fun RowIconText(

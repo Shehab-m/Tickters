@@ -7,11 +7,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
@@ -32,20 +30,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
-import com.cheesecake.tickters.screens.composable.ColumnRoundedBottom
+import com.cheesecake.tickters.R
 import com.cheesecake.tickters.screens.composable.ImageActorItem
 import com.cheesecake.tickters.screens.composable.MovieScreenHeader
 import com.cheesecake.tickters.screens.composable.PrimaryButton
 import com.cheesecake.tickters.screens.composable.RowTagsChips
 import com.cheesecake.tickters.screens.composable.SpacerVertical16
-import com.cheesecake.tickters.screens.composable.SpacerVertical36
 import com.cheesecake.tickters.screens.composable.TextCentered
 import com.cheesecake.tickters.screens.composable.TextRating
 import com.cheesecake.tickters.ui.theme.Orange
 import com.cheesecake.tickters.ui.theme.White
 import com.cheesecake.tickters.viewmodel.MovieDetailsViewModel
 import com.cheesecake.tickters.viewmodel.state.MovieDetailsUIState
-import com.example.tickets.R
 
 
 @Composable
@@ -108,7 +104,10 @@ fun MovieDetailsContent(state: MovieDetailsUIState) {
         ) {
 
             Row(
-                modifier = Modifier.fillMaxWidth().padding(top = 24.dp), horizontalArrangement = Arrangement.SpaceEvenly
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 24.dp),
+                horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 TextRating("6.8", "IMDb", "/10")
                 TextRating("63%", "Rotten Tomatoes")
