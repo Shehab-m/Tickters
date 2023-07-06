@@ -7,9 +7,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -32,7 +34,6 @@ import androidx.navigation.compose.rememberNavController
 import com.cheesecake.tickters.ui.BottomNavGraph
 import com.cheesecake.tickters.ui.theme.Orange
 import com.cheesecake.tickters.ui.theme.White
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -58,8 +59,7 @@ fun BottomBar(navController: NavHostController) {
     val currentDestination = navStackBackEntry?.destination
     Row(
         modifier = Modifier
-            .padding(vertical = 8.dp, horizontal = 20.dp)
-            .background(White)
+            .padding(vertical = 16.dp, horizontal = 24.dp)
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
@@ -82,11 +82,11 @@ fun RowScope.AddItem(
     navController: NavHostController
 ) {
     val selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true
-    val background = if (selected) Orange.copy(alpha = 0.6f) else Color.Transparent
+    val background = if (selected) Orange else Color.Transparent
     val contentColor = if (selected) Color.White else Color.Black
     Box(
         modifier = Modifier
-            .height(40.dp)
+            .size(50.dp)
             .clip(CircleShape)
             .background(background)
             .clickable(onClick = {
@@ -97,7 +97,7 @@ fun RowScope.AddItem(
             })
     ) {
         Icon(
-            modifier = Modifier.padding(vertical = 8.dp, horizontal = 10.dp),
+            modifier = Modifier.padding(vertical = 10.dp, horizontal = 10.dp).matchParentSize(),
             painter = painterResource(id = screen.icon),
             contentDescription = "icon",
             tint = contentColor

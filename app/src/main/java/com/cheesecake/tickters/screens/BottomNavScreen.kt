@@ -10,12 +10,12 @@ sealed class BottomNavScreen(
     object Home : BottomNavScreen(
         route = "homeScreen",
         title = "Home",
-        icon = R.drawable.home
+        icon = R.drawable.movie_videos_svgrepo_com
     )
    object Search : BottomNavScreen(
         route = "search",
         title = "Search",
-        icon = R.drawable.magnifer
+        icon = R.drawable.search_4_svgrepo_com
     )
    object Tickets : BottomNavScreen(
         route = "bookingScreen",
