@@ -1,5 +1,6 @@
 package com.cheesecake.tickters.screens
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -9,7 +10,10 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -23,7 +27,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.cheesecake.tickters.R
+import com.cheesecake.tickters.screens.composable.BottomNavBar
 import com.cheesecake.tickters.screens.composable.ImageBackground
 import com.cheesecake.tickters.screens.composable.ButtonHomeContent
 import com.cheesecake.tickters.screens.composable.Carousel
@@ -38,77 +45,91 @@ import com.cheesecake.tickters.viewmodel.HomeViewModel
 import com.cheesecake.tickters.viewmodel.model.HomeContentType
 import com.cheesecake.tickters.viewmodel.state.HomeUIState
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsState()
-    HomeContent(state, viewModel)
+    val pagerState = rememberPagerState(initialPage = state.movies.size / 2)
+    val navController = rememberNavController()
+    HomeContent(state, viewModel, pagerState, navController)
 }
 
-@OptIn(ExperimentalFoundationApi::class)
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable
-fun HomeContent(state: HomeUIState, viewModel: HomeScreenInteractions) {
-    val pagerState = rememberPagerState(initialPage = state.movies.size / 2)
+fun HomeContent(
+    state: HomeUIState,
+    viewModel: HomeScreenInteractions,
+    pagerState: PagerState,
+    navController: NavHostController
+) {
+
     var selectedMovie by remember { mutableStateOf(state.movies[state.movies.size / 2]) }
+    Scaffold(bottomBar = { BottomNavBar(navController = navController) }) {
+        NavGraph(navController = navController)
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(White),
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(White),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
 
-        Box {
+            Box {
 
-            ImageBackground(selectedMovie.imageUrl)
+                ImageBackground(selectedMovie.imageUrl)
 
-            Carousel(
-                modifier = Modifier
-                    .padding(top = 120.dp)
-                    .fillMaxWidth(),
-                pagerState = pagerState,
-                items = state.movies
-            ) { movie ->
-                selectedMovie = movie
+                Carousel(
+                    modifier = Modifier
+                        .padding(top = 120.dp)
+                        .fillMaxWidth(),
+                    pagerState = pagerState,
+                    items = state.movies
+                ) { movie ->
+                    selectedMovie = movie
+                }
+
+                Row(
+                    horizontalArrangement = Arrangement.Center,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 60.dp)
+                ) {
+
+                    ButtonHomeContent(
+                        buttonText = "Now Showing",
+                        selected = state.homeContentType == HomeContentType.NowShowing,
+                        onClick = { viewModel.updateHomeContent(HomeContentType.NowShowing) }
+                    )
+
+                    ButtonHomeContent(
+                        buttonText = "Coming Soon",
+                        selected = state.homeContentType == HomeContentType.ComingSoon,
+                        onClick = { viewModel.updateHomeContent(HomeContentType.ComingSoon) }
+                    )
+
+                }
             }
 
-            Row(
-                horizontalArrangement = Arrangement.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 60.dp)
-            ) {
+            RowIconText(
+                text = selectedMovie.duration,
+                iconColor = DarkGrey,
+                textColor = Black,
+                painter = painterResource(id = R.drawable.clock_svgrepo_com),
+                modifier = Modifier.padding(top = 20.dp)
+            )
 
-                ButtonHomeContent(
-                    buttonText = "Now Showing",
-                    selected = state.homeContentType == HomeContentType.NowShowing,
-                    onClick = { viewModel.updateHomeContent(HomeContentType.NowShowing) }
-                )
+            TextCentered(text = selectedMovie.title, size = 26.sp)
 
-                ButtonHomeContent(
-                    buttonText = "Coming Soon",
-                    selected = state.homeContentType == HomeContentType.ComingSoon,
-                    onClick = { viewModel.updateHomeContent(HomeContentType.ComingSoon) }
-                )
+            RowTagsChips(items = selectedMovie.tags, modifier = Modifier.padding(top = 16.dp))
 
-            }
+
         }
 
-        RowIconText(
-            text = selectedMovie.duration,
-            iconColor = DarkGrey,
-            textColor = Black,
-            painter = painterResource(id = R.drawable.clock_svgrepo_com),
-            modifier = Modifier.padding(top = 20.dp)
-        )
-
-        TextCentered(text = selectedMovie.title, size = 26.sp)
-
-        RowTagsChips(items = selectedMovie.tags, modifier = Modifier.padding(top = 16.dp))
-
-
     }
+
 }
 
 

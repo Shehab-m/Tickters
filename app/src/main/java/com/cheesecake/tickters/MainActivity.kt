@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.core.view.WindowCompat
 import com.cheesecake.tickters.screens.BookingScreen
+import com.cheesecake.tickters.screens.HomeScreen
 import com.cheesecake.tickters.screens.MainScreen
 import com.cheesecake.tickters.ui.theme.TicktersTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
@@ -37,7 +38,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                   MainScreen()
+                   HomeScreen()
                 }
             }
         }
