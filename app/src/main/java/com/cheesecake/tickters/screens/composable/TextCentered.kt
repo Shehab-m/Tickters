@@ -6,18 +6,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
 fun TextCentered(
     text: String,
-    size : Int,
+    size : TextUnit,
     modifier: Modifier = Modifier,
 ) {
     Text(
         text = text,
-        fontSize = (size.sp),
+        fontSize = (size),
         textAlign = TextAlign.Center,
         maxLines = 3,
         overflow = TextOverflow.Ellipsis,

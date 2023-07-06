@@ -101,9 +101,21 @@ fun BookingContent(state: BookingUIState) {
                     top.linkTo(rowSeats.bottom)
                 }
         ) {
-            RowIconText(text = "Available", iconColor = White)
-            RowIconText(text = "Taken", iconColor = MediumGrey)
-            RowIconText(text = "Selected", iconColor = Orange)
+            RowIconText(
+                text = "Available",
+                iconColor = White,
+                painter = painterResource(id = R.drawable.dot_svgrepo_com)
+            )
+            RowIconText(
+                text = "Taken",
+                iconColor = MediumGrey,
+                painter = painterResource(id = R.drawable.dot_svgrepo_com)
+            )
+            RowIconText(
+                text = "Selected",
+                iconColor = Orange,
+                painter = painterResource(id = R.drawable.dot_svgrepo_com)
+            )
         }
 
         Column(

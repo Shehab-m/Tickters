@@ -28,6 +28,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import com.cheesecake.tickters.R
@@ -114,13 +115,13 @@ fun MovieDetailsContent(state: MovieDetailsUIState) {
                 TextRating("4", "IGN", "/10")
             }
 
-            TextCentered(text = state.name, size = 26)
+            TextCentered(text = state.name, size = 26.sp)
 
             SpacerVertical16()
 
             RowTagsChips(state.tags)
 
-            TextCentered(text = state.description, size = 14)
+            TextCentered(text = state.description, size = 14.sp)
 
             SpacerVertical16()
 
