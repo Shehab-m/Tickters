@@ -30,36 +30,40 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberAsyncImagePainter
 import com.cheesecake.tickters.R
+import com.cheesecake.tickters.screens.composable.ButtonExit
 import com.cheesecake.tickters.screens.composable.ImageActorItem
-import com.cheesecake.tickters.screens.composable.MovieScreenHeader
 import com.cheesecake.tickters.screens.composable.PrimaryButton
 import com.cheesecake.tickters.screens.composable.RowTagsChips
 import com.cheesecake.tickters.screens.composable.SpacerVertical16
 import com.cheesecake.tickters.screens.composable.TextCentered
 import com.cheesecake.tickters.screens.composable.TextRating
+import com.cheesecake.tickters.screens.composable.TextWithIcon
 import com.cheesecake.tickters.ui.theme.Orange
 import com.cheesecake.tickters.ui.theme.White
 import com.cheesecake.tickters.viewmodel.MovieDetailsViewModel
 import com.cheesecake.tickters.viewmodel.state.MovieDetailsUIState
 
-
 @Composable
 fun MovieDetailsScreen(
+    navController: NavController,
     viewModel: MovieDetailsViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsState()
-    MovieDetailsContent(state)
 
+    MovieDetailsContent(state) { navController.navigateUp() }
 }
 
 @Composable
-fun MovieDetailsContent(state: MovieDetailsUIState) {
+fun MovieDetailsContent(state: MovieDetailsUIState, navigateUp: () -> Unit) {
     Box(
         modifier = Modifier.fillMaxSize()
 
     ) {
+
 
         Box {
             Image(
@@ -71,7 +75,21 @@ fun MovieDetailsContent(state: MovieDetailsUIState) {
                 contentScale = ContentScale.FillBounds,
             )
 
-            MovieScreenHeader()
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 46.dp, end = 16.dp, start = 16.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+
+                ButtonExit(onClick = navigateUp)
+
+                TextWithIcon(
+                    "2h 23m",
+                    painterResource(id = R.drawable.clock_svgrepo_com),
+                )
+            }
 
             IconButton(
                 onClick = {},
@@ -115,7 +133,7 @@ fun MovieDetailsContent(state: MovieDetailsUIState) {
                 TextRating("4", "IGN", "/10")
             }
 
-            TextCentered(text = state.name, size = 26.sp)
+            TextCentered(text = state.title, size = 26.sp)
 
             SpacerVertical16()
 
@@ -146,5 +164,5 @@ fun MovieDetailsContent(state: MovieDetailsUIState) {
 @Preview
 @Composable
 fun PreviewMovieScreen() {
-    MovieDetailsScreen()
+    MovieDetailsScreen(rememberNavController())
 }

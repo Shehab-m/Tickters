@@ -1,4 +1,4 @@
-package com.cheesecake.tickters.screens.composable
+package com.cheesecake.tickters.navigation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -24,33 +24,52 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.cheesecake.tickters.screens.BottomNavDestinations
 import com.cheesecake.tickters.ui.theme.Orange
 
 
 @Composable
 fun BottomNavBar(navController: NavHostController) {
     val screens = listOf(
-        BottomNavDestinations.Home,
-        BottomNavDestinations.Search,
-        BottomNavDestinations.Tickets,
-        BottomNavDestinations.Profile,
+        ScreensRoute.Home,
+        ScreensRoute.Search,
+        ScreensRoute.Tickets,
+        ScreensRoute.Profile,
 
         )
     val navStackBackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navStackBackEntry?.destination
     Row(
         modifier = Modifier
-            .padding(vertical = 16.dp, horizontal = 24.dp)
+            .padding(vertical = 20.dp, horizontal = 24.dp)
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
         screens.forEach { screen ->
+            fun onClick() {
+                when (screen.route) {
+                    ScreensRoute.Home.route -> {
+                        navController.navigate(ScreensRoute.Home.route) {
+                            popUpTo(navController.graph.findStartDestination().id)
+                            launchSingleTop = true
+                        }
+                    }
+
+                    ScreensRoute.Tickets.route -> {
+                        navController.navigate(ScreensRoute.Tickets.route) {
+                            popUpTo(navController.graph.findStartDestination().id)
+                            launchSingleTop = true
+                        }
+                    }
+
+                    else -> {}
+                }
+            }
             AddItem(
                 screen = screen,
                 currentDestination = currentDestination,
-                navController = navController
+                navController = navController,
+                onClick = ::onClick
             )
         }
     }
@@ -59,9 +78,10 @@ fun BottomNavBar(navController: NavHostController) {
 
 @Composable
 fun RowScope.AddItem(
-    screen: BottomNavDestinations,
+    screen: ScreensRoute,
     currentDestination: NavDestination?,
-    navController: NavHostController
+    navController: NavHostController,
+    onClick: () -> Unit
 ) {
     val selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true
     val background = if (selected) Orange else Color.Transparent
@@ -71,15 +91,12 @@ fun RowScope.AddItem(
             .size(50.dp)
             .clip(CircleShape)
             .background(background)
-            .clickable(onClick = {
-                navController.navigate(screen.route) {
-                    popUpTo(navController.graph.findStartDestination().id)
-                    launchSingleTop = true
-                }
-            })
+            .clickable(onClick = onClick)
     ) {
         Icon(
-            modifier = Modifier.padding(vertical = 10.dp, horizontal = 10.dp).matchParentSize(),
+            modifier = Modifier
+                .padding(vertical = 10.dp, horizontal = 10.dp)
+                .matchParentSize(),
             painter = painterResource(id = screen.icon),
             contentDescription = "icon",
             tint = contentColor

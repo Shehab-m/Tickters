@@ -15,9 +15,9 @@ import com.cheesecake.tickters.ui.theme.DarkGrey
 import com.cheesecake.tickters.ui.theme.OnBackgroundColor
 
 @Composable
-fun ButtonExit(modifier: Modifier = Modifier) {
+fun ButtonExit(modifier: Modifier = Modifier,onClick: ()-> Unit) {
     IconButton(
-        onClick = {}, modifier = modifier
+        onClick = onClick, modifier = modifier
             .clip(CircleShape)
             .size(38.dp)
             .background(DarkGrey)

@@ -27,6 +27,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.cheesecake.tickters.R
 import com.cheesecake.tickters.screens.composable.ButtonExit
 import com.cheesecake.tickters.screens.composable.CardDateItem
@@ -39,19 +41,25 @@ import com.cheesecake.tickters.ui.theme.MediumGrey
 import com.cheesecake.tickters.ui.theme.Orange
 import com.cheesecake.tickters.ui.theme.TextGrey
 import com.cheesecake.tickters.ui.theme.White
+import com.cheesecake.tickters.viewmodel.BookingScreenInteractions
 import com.cheesecake.tickters.viewmodel.BookingViewModel
 import com.cheesecake.tickters.viewmodel.state.BookingUIState
 
 @Composable
 fun BookingScreen(
+    navController: NavHostController,
     viewModel: BookingViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsState()
-    BookingContent(state)
+    BookingContent(state, viewModel) { navController.navigateUp() }
 }
 
 @Composable
-fun BookingContent(state: BookingUIState) {
+fun BookingContent(
+    state: BookingUIState,
+    viewModel: BookingScreenInteractions,
+    navigateUp: () -> Unit
+) {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
@@ -59,48 +67,39 @@ fun BookingContent(state: BookingUIState) {
     ) {
         val (bottomSheet, imageBanner, rowGuide, rowSeats, buttonExit) = createRefs()
 
-        Image(
-            painter = painterResource(id = R.drawable.img_1),
+        Image(painter = painterResource(id = R.drawable.img_1),
             contentDescription = "Cinema",
             contentScale = ContentScale.FillBounds,
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(.1f)
+                .fillMaxHeight(.12f)
                 .constrainAs(imageBanner) {
                     top.linkTo(parent.top, 58.dp)
-                }
-        )
+                })
 
-        Row(
-            horizontalArrangement = Arrangement.SpaceAround,
+
+        Row(horizontalArrangement = Arrangement.SpaceAround,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 16.dp, end = 20.dp, start = 20.dp)
                 .constrainAs(rowSeats) {
                     top.linkTo(imageBanner.bottom)
                     bottom.linkTo(rowGuide.top)
-                }
-        ) {
-            ColumnSeats(rowsNum = 5, rotation = 10f)
-            ColumnSeats(rowsNum = 5, modifier = Modifier.padding(top = 9.dp))
-            ColumnSeats(rowsNum = 5, rotation = -10f)
+                }) {
+            ColumnSeats(rows = state.seats, rotation = 10f)
+            ColumnSeats(rows = state.seats, modifier = Modifier.padding(top = 9.dp))
+            ColumnSeats(rows = state.seats, rotation = -10f)
         }
 
 
-
-
-
-
-        Row(
-            horizontalArrangement = Arrangement.SpaceAround,
+        Row(horizontalArrangement = Arrangement.SpaceAround,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 16.dp)
                 .constrainAs(rowGuide) {
                     bottom.linkTo(bottomSheet.top)
                     top.linkTo(rowSeats.bottom)
-                }
-        ) {
+                }) {
             RowIconText(
                 text = "Available",
                 iconColor = White,
@@ -118,8 +117,7 @@ fun BookingContent(state: BookingUIState) {
             )
         }
 
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
+        Column(horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top,
             modifier = Modifier
                 .fillMaxWidth()
@@ -127,8 +125,7 @@ fun BookingContent(state: BookingUIState) {
                 .background(White)
                 .constrainAs(bottomSheet) {
                     bottom.linkTo(parent.bottom)
-                }
-        ) {
+                }) {
 
             LazyRow(
                 modifier = Modifier.fillMaxWidth(),
@@ -165,23 +162,21 @@ fun BookingContent(state: BookingUIState) {
 
                 PrimaryButton(text = "Buy tickets")
             }
-
-
         }
 
-        ButtonExit(modifier = Modifier.constrainAs(buttonExit) {
-            top.linkTo(parent.top, 32.dp)
-            start.linkTo(parent.start, 24.dp)
-        })
+        ButtonExit(
+            modifier = Modifier.constrainAs(buttonExit) {
+                top.linkTo(parent.top, 32.dp)
+                start.linkTo(parent.start, 24.dp)
+            },
+            onClick = navigateUp
+        )
 
     }
-
-
 }
-
 
 @Preview
 @Composable
 fun BookingScreenPreview() {
-    BookingScreen()
+    BookingScreen(rememberNavController())
 }

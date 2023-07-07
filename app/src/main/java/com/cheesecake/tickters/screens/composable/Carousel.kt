@@ -7,8 +7,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
@@ -17,8 +15,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.BlurredEdgeTreatment
-import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.layout.ContentScale
@@ -27,15 +23,15 @@ import coil.compose.rememberAsyncImagePainter
 import com.cheesecake.tickters.viewmodel.model.Movie
 
 
-
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun Carousel(
     pagerState: PagerState,
     items: List<Movie>,
     modifier: Modifier = Modifier,
-    onItemSelected: (Movie) -> Unit,
-) {
+    onShowingItem: (Movie, Int) -> Unit,
+    onClickItem: () -> Unit
+    ) {
     HorizontalPager(
         state = pagerState,
         pageCount = items.size,
@@ -44,7 +40,7 @@ fun Carousel(
     ) { page ->
         val movie = items[page % items.size]
 
-        onItemSelected(items[pagerState.currentPage])
+        onShowingItem(items[pagerState.currentPage],pagerState.currentPage)
 
         val animatedScale by animateFloatAsState(
             targetValue = if (page == pagerState.currentPage) 1f else 0.8f,
@@ -61,7 +57,7 @@ fun Carousel(
                 .aspectRatio(3 / 4f)
                 .scale(animatedScale)
                 .clip(MaterialTheme.shapes.extraLarge)
-                .clickable { }
+                .clickable {onClickItem.invoke() }
         )
     }
 }

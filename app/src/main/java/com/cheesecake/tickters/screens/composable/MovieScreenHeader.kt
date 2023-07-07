@@ -12,18 +12,6 @@ import androidx.compose.ui.unit.dp
 import com.cheesecake.tickters.R
 
 @Composable
-fun MovieScreenHeader() {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 46.dp, end = 16.dp, start = 16.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        ButtonExit()
-        TextWithIcon(
-            "2h 23m",
-            painterResource(id = R.drawable.clock_svgrepo_com),
-        )
-    }
+fun MovieScreenHeader(onClick: () -> Unit) {
+
 }

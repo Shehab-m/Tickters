@@ -1,6 +1,12 @@
-package com.cheesecake.tickters.screens
+package com.cheesecake.tickters.navigation
 
 import android.annotation.SuppressLint
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOut
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -21,30 +27,31 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
-import com.cheesecake.tickters.screens.composable.BottomNavBar
 import com.cheesecake.tickters.ui.theme.Orange
 
-@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen() {
-
-
+fun NavGraphScreen(navController: NavHostController) {
+    val navStackBackEntry by navController.currentBackStackEntryAsState()
+    val currentDestination = navStackBackEntry?.destination?.route
+    Scaffold(bottomBar = {
+        AnimatedVisibility(
+            visible = (currentDestination == ScreensRoute.Home.route),
+            enter = slideInVertically(initialOffsetY = { it }) + fadeIn(),
+            exit = slideOutVertically(targetOffsetY = { it }) + fadeOut()
+        ) {
+            BottomNavBar(navController = navController)
+        }
+    }) {
+        NavGraph(navController = navController)
+    }
 
 }
-
-
-
-
-
-
-
 
