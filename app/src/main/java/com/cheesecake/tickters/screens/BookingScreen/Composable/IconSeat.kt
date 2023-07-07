@@ -1,4 +1,4 @@
-package com.cheesecake.tickters.screens.composable
+package com.cheesecake.tickters.screens.BookingScreen.Composable
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.clickable
@@ -12,6 +12,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.cheesecake.tickters.R
+import com.cheesecake.tickters.screens.composable.CreateIndication
+import com.cheesecake.tickters.screens.composable.CreateMutableInteractionSource
 import com.cheesecake.tickters.ui.theme.Orange
 import com.cheesecake.tickters.ui.theme.White
 import com.cheesecake.tickters.viewmodel.state.SeatState

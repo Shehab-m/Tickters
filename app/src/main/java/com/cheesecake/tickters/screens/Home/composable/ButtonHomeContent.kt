@@ -1,4 +1,4 @@
-package com.cheesecake.tickters.screens.composable
+package com.cheesecake.tickters.screens.Home.composable
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.BorderStroke
@@ -12,7 +12,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.cheesecake.tickters.ui.theme.Orange
-import com.cheesecake.tickters.ui.theme.White
 import com.cheesecake.tickters.ui.theme.White_36
 
 @Composable

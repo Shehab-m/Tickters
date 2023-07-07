@@ -1,4 +1,4 @@
-package com.cheesecake.tickters.screens.composable
+package com.cheesecake.tickters.screens.BookingScreen.Composable
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.height
@@ -9,25 +9,28 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.cheesecake.tickters.screens.composable.ColumnFillInCard
+import com.cheesecake.tickters.screens.composable.TextCenteredInCard
 import com.cheesecake.tickters.ui.theme.DarkGrey
 
 @Composable
-fun CardTimeItem(time: String) {
+fun CardDateItem(date: String, day: String) {
     Card(
-        shape = RoundedCornerShape(20.dp),
+        shape = RoundedCornerShape(24.dp),
         border = BorderStroke(1.dp, DarkGrey),
         modifier = Modifier
-            .height(38.dp)
-            .width(56.dp),
+            .height(64.dp)
+            .width(54.dp)
     ) {
         ColumnFillInCard {
-            TextCenteredInCard(time)
+            TextCenteredInCard(date)
+            TextCenteredInCard(day)
         }
     }
 }
 
 @Preview
 @Composable
-fun CardTimeItemPreview() {
-    CardTimeItem("10:00")
+fun CardDateItemPreview() {
+    CardDateItem("17","sun")
 }

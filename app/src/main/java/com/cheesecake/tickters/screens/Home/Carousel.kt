@@ -1,4 +1,4 @@
-package com.cheesecake.tickters.screens.composable
+package com.cheesecake.tickters.screens.Home
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween

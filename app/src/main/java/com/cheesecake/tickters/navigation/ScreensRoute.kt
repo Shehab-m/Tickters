@@ -27,10 +27,6 @@ sealed class ScreensRoute(
         title = "Profile",
         icon = R.drawable.profile_1341_svgrepo_com
     )
-   object MovieDetails : ScreensRoute(
-        route = "movieDetails",
-        title = "Movie Details",
-        icon = R.drawable.movie_videos_svgrepo_com
-    )
+
 
 }

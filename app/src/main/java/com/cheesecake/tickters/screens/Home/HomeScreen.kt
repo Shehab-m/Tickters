@@ -1,4 +1,4 @@
-package com.cheesecake.tickters.screens.HomeScreen
+package com.cheesecake.tickters.screens.Home
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -30,9 +30,8 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.cheesecake.tickters.R
 import com.cheesecake.tickters.navigation.navigateTOMovieDetails
-import com.cheesecake.tickters.screens.composable.ImageBackground
-import com.cheesecake.tickters.screens.composable.ButtonHomeContent
-import com.cheesecake.tickters.screens.composable.Carousel
+import com.cheesecake.tickters.screens.Home.composable.ImageBackground
+import com.cheesecake.tickters.screens.Home.composable.ButtonHomeContent
 import com.cheesecake.tickters.screens.composable.RowIconText
 import com.cheesecake.tickters.screens.composable.RowTagsChips
 import com.cheesecake.tickters.screens.composable.TextCentered
@@ -128,7 +127,6 @@ fun HomeContent(
         TextCentered(text = selectedMovie.title, size = 26.sp)
 
         RowTagsChips(items = selectedMovie.tags, modifier = Modifier.padding(top = 16.dp))
-
 
     }
 

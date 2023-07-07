@@ -13,18 +13,18 @@ class BookingViewModel @Inject constructor() : BaseViewModel<BookingUIState>(Boo
     BookingScreenInteractions {
 
     private val dateItems = listOf(
-        DateUIState("17", "sun"),
-        DateUIState("17", "sun"),
-        DateUIState("17", "sun"),
-        DateUIState("17", "sun"),
-        DateUIState("17", "sun"),
-        DateUIState("17", "sun"),
-        DateUIState("17", "sun"),
-        DateUIState("17", "sun"),
-        DateUIState("17", "sun"),
+        DateUIState("11", "sun"),
+        DateUIState("12", "mon"),
+        DateUIState("13", "tue"),
+        DateUIState("14", "wed"),
+        DateUIState("15", "thu"),
+        DateUIState("16", "fri"),
+        DateUIState("17", "sat"),
+        DateUIState("18", "sun"),
+        DateUIState("19", "mon"),
 
         )
-    private val timeItems = listOf("10:00", "10:00", "10:00", "10:00", "10:00", "10:00", "10:00", "10:00", "10:00")
+    private val timeItems = listOf("10:00", "13:00", "15:00", "18:00", "20:00", "24:00", "02:00", "04:00", "06:00")
 
     init {
         _state.update {
@@ -36,7 +36,7 @@ class BookingViewModel @Inject constructor() : BaseViewModel<BookingUIState>(Boo
                 seats = listOf(
                     Pair(SeatState.Selected, SeatState.Available),
                     Pair(SeatState.Available, SeatState.Taken),
-                    Pair(SeatState.Selected, SeatState.Selected),
+                    Pair(SeatState.Selected, SeatState.Taken),
                     Pair(SeatState.Taken, SeatState.Available),
                     Pair(SeatState.Available, SeatState.Selected),
                 )

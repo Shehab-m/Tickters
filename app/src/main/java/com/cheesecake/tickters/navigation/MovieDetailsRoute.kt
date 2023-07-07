@@ -8,8 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.cheesecake.tickters.navigation.MovieDetailsArgs.Companion.ID_ARG
 import com.cheesecake.tickters.navigation.MovieDetailsArgs.Companion.TYPE_ARG
-import com.cheesecake.tickters.screens.MovieDetailsScreen
-import com.cheesecake.tickters.viewmodel.model.MovieType
+import com.cheesecake.tickters.screens.MovieDetails.MovieDetailsScreen
 
 fun NavController.navigateTOMovieDetails(id: Int,type:String) {
     navigate("$ROUTE/$id/$type")

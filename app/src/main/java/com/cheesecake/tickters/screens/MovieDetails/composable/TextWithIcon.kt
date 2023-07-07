@@ -1,4 +1,4 @@
-package com.cheesecake.tickters.screens.composable
+package com.cheesecake.tickters.screens.MovieDetails.composable
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row

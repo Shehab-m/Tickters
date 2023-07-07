@@ -1,30 +1,20 @@
-package com.cheesecake.tickters.screens
+package com.cheesecake.tickters.screens.MovieDetails
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -34,15 +24,15 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberAsyncImagePainter
 import com.cheesecake.tickters.R
+import com.cheesecake.tickters.screens.MovieDetails.composable.ButtonPlay
+import com.cheesecake.tickters.screens.MovieDetails.composable.ImageMovie
+import com.cheesecake.tickters.screens.MovieDetails.composable.RowItemsCast
+import com.cheesecake.tickters.screens.MovieDetails.composable.TextRating
+import com.cheesecake.tickters.screens.MovieDetails.composable.TextWithIcon
 import com.cheesecake.tickters.screens.composable.ButtonExit
-import com.cheesecake.tickters.screens.composable.ImageActorItem
 import com.cheesecake.tickters.screens.composable.PrimaryButton
 import com.cheesecake.tickters.screens.composable.RowTagsChips
-import com.cheesecake.tickters.screens.composable.SpacerVertical16
 import com.cheesecake.tickters.screens.composable.TextCentered
-import com.cheesecake.tickters.screens.composable.TextRating
-import com.cheesecake.tickters.screens.composable.TextWithIcon
-import com.cheesecake.tickters.ui.theme.Orange
 import com.cheesecake.tickters.ui.theme.White
 import com.cheesecake.tickters.viewmodel.MovieDetailsViewModel
 import com.cheesecake.tickters.viewmodel.state.MovieDetailsUIState
@@ -66,14 +56,8 @@ fun MovieDetailsContent(state: MovieDetailsUIState, navigateUp: () -> Unit) {
 
 
         Box {
-            Image(
-                painter = rememberAsyncImagePainter(model = state.imageUrl),
-                contentDescription = "Movie Image",
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .fillMaxHeight(.5f),
-                contentScale = ContentScale.FillBounds,
-            )
+            
+            ImageMovie(painter = rememberAsyncImagePainter(model = state.imageUrl))
 
             Row(
                 modifier = Modifier
@@ -91,24 +75,7 @@ fun MovieDetailsContent(state: MovieDetailsUIState, navigateUp: () -> Unit) {
                 )
             }
 
-            IconButton(
-                onClick = {},
-                modifier = Modifier
-                    .align(Alignment.Center)
-                    .clip(CircleShape)
-                    .size(48.dp)
-                    .background(Orange),
-
-                ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.play_alt_svgrepo_com),
-                    contentDescription = "Play",
-                    tint = White,
-                    modifier = Modifier
-                        .size(24.dp)
-                        .align(Alignment.Center)
-                )
-            }
+            ButtonPlay(modifier = Modifier.align(Alignment.Center))
         }
 
 
@@ -128,31 +95,19 @@ fun MovieDetailsContent(state: MovieDetailsUIState, navigateUp: () -> Unit) {
                     .padding(top = 24.dp),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                TextRating("6.8", "IMDb", "/10")
-                TextRating("63%", "Rotten Tomatoes")
-                TextRating("4", "IGN", "/10")
+                TextRating(rating = "6.8", ratingOf = "/10", site = "IMDb", )
+                TextRating(rating = "63%", site = "Rotten Tomatoes")
+                TextRating(rating = "4", ratingOf = "/10", site = "IGN", )
             }
 
             TextCentered(text = state.title, size = 26.sp)
 
-            SpacerVertical16()
 
-            RowTagsChips(state.tags)
+            RowTagsChips(state.tags, modifier = Modifier.padding(top = 16.dp))
 
             TextCentered(text = state.description, size = 14.sp)
 
-            SpacerVertical16()
-
-            LazyRow(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                contentPadding = PaddingValues(horizontal = 24.dp),
-            ) {
-                items(state.itemsCast) {
-                    ImageActorItem(it)
-                }
-            }
+            RowItemsCast(items = state.itemsCast)
 
             PrimaryButton(text = "Booking", modifier = Modifier.padding(vertical = 16.dp))
 

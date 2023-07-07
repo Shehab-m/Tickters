@@ -1,4 +1,4 @@
-package com.cheesecake.tickters.screens.composable
+package com.cheesecake.tickters.screens.BookingScreen.Composable
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.cheesecake.tickters.screens.BookingScreen.Composable.IconSeat
 import com.cheesecake.tickters.viewmodel.state.SeatState
 import com.cheesecake.tickters.viewmodel.state.getNextState
 

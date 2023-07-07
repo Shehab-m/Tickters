@@ -1,4 +1,4 @@
-package com.cheesecake.tickters.screens.composable
+package com.cheesecake.tickters.screens.MovieDetails
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.size

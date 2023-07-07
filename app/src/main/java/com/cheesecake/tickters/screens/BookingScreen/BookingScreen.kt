@@ -1,12 +1,10 @@
-package com.cheesecake.tickters.screens
+package com.cheesecake.tickters.screens.BookingScreen
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -20,7 +18,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -30,9 +27,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.cheesecake.tickters.R
+import com.cheesecake.tickters.screens.BookingScreen.Composable.ImageHeaderCinema
 import com.cheesecake.tickters.screens.composable.ButtonExit
-import com.cheesecake.tickters.screens.composable.CardDateItem
-import com.cheesecake.tickters.screens.composable.CardTimeItem
+import com.cheesecake.tickters.screens.BookingScreen.Composable.CardDateItem
+import com.cheesecake.tickters.screens.BookingScreen.Composable.CardTimeItem
 import com.cheesecake.tickters.screens.composable.ColumnSeats
 import com.cheesecake.tickters.screens.composable.PrimaryButton
 import com.cheesecake.tickters.screens.composable.RowIconText
@@ -67,15 +65,9 @@ fun BookingContent(
     ) {
         val (bottomSheet, imageBanner, rowGuide, rowSeats, buttonExit) = createRefs()
 
-        Image(painter = painterResource(id = R.drawable.img_1),
-            contentDescription = "Cinema",
-            contentScale = ContentScale.FillBounds,
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight(.12f)
-                .constrainAs(imageBanner) {
-                    top.linkTo(parent.top, 58.dp)
-                })
+        ImageHeaderCinema(modifier = Modifier.constrainAs(imageBanner) {
+            top.linkTo(parent.top, 58.dp)
+        })
 
 
         Row(horizontalArrangement = Arrangement.SpaceAround,
@@ -166,8 +158,8 @@ fun BookingContent(
 
         ButtonExit(
             modifier = Modifier.constrainAs(buttonExit) {
-                top.linkTo(parent.top, 32.dp)
-                start.linkTo(parent.start, 24.dp)
+                top.linkTo(parent.top, 46.dp)
+                start.linkTo(parent.start, 16.dp)
             },
             onClick = navigateUp
         )
