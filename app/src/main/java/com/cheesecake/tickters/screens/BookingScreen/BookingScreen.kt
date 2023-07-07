@@ -49,13 +49,12 @@ fun BookingScreen(
     viewModel: BookingViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsState()
-    BookingContent(state, viewModel) { navController.navigateUp() }
+    BookingContent(state) { navController.navigateUp() }
 }
 
 @Composable
 fun BookingContent(
     state: BookingUIState,
-    viewModel: BookingScreenInteractions,
     navigateUp: () -> Unit
 ) {
     ConstraintLayout(
