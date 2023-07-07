@@ -7,13 +7,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
 import com.cheesecake.tickters.R
 
 @Composable
 fun ImageHeaderCinema(modifier: Modifier = Modifier) {
     Image(
-        painter = painterResource(id = R.drawable.img_1),
+        painter = painterResource(id = R.drawable.img_2),
         contentDescription = "Cinema",
         contentScale = ContentScale.FillBounds,
         modifier = modifier
@@ -21,3 +20,32 @@ fun ImageHeaderCinema(modifier: Modifier = Modifier) {
             .fillMaxHeight(.12f)
     )
 }
+//
+//@Composable
+//fun ImageHeaderCinemas(modifier: Modifier = Modifier) {
+//    Box(modifier = modifier.fillMaxWidth()) {
+//        BoxWithConstraints(modifier = Modifier.fillMaxHeight(.12f)) {
+//            val curveHeight = maxHeight * 0.2f // Adjust the curve height as per your needs
+//
+//            val path = Path().apply {
+//                moveTo(0f, 0f)
+//                quadraticBezierTo(maxWidth / 2f, curveHeight, maxWidth, 0f)
+//                lineTo(maxWidth, maxHeight)
+//                lineTo(0f, maxHeight)
+//                close()
+//            }
+//            clipPath(path = path) {
+//                this@drawWithContent.drawContent()
+//            }
+//
+//        }
+//
+//        Image(
+//            painter = painterResource(id = R.drawable.img_2),
+//            contentDescription = "Cinema",
+//            contentScale = ContentScale.FillBounds,
+//            modifier = Modifier.fillMaxSize()
+//        )
+//    }
+//}
+
