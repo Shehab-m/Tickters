@@ -77,9 +77,9 @@ fun BookingContent(
                     top.linkTo(imageBanner.bottom)
                     bottom.linkTo(rowGuide.top)
                 }) {
-            ColumnSeats(rows = state.seats, rotation = 10f)
-            ColumnSeats(rows = state.seats, modifier = Modifier.padding(top = 9.dp))
-            ColumnSeats(rows = state.seats, rotation = -10f)
+            ColumnSeats(rows = state.seats, rotation = 11f)
+            ColumnSeats(rows = state.seats, modifier = Modifier.padding(top = 10.dp))
+            ColumnSeats(rows = state.seats, rotation = -11f)
         }
 
 

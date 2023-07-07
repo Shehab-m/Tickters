@@ -18,19 +18,6 @@ class MovieDetailsViewModel  @Inject constructor(
 
     private val args = MovieDetailsArgs(savedStateHandle)
 
-//    private val actorsItems = listOf(
-//        "https://user-images.githubusercontent.com/90576202/250568264-101026cf-20f9-4f13-8235-b7674664ddc5.png",
-//        "https://user-images.githubusercontent.com/90576202/250568264-101026cf-20f9-4f13-8235-b7674664ddc5.png",
-//        "https://user-images.githubusercontent.com/90576202/250568264-101026cf-20f9-4f13-8235-b7674664ddc5.png",
-//        "https://user-images.githubusercontent.com/90576202/250568264-101026cf-20f9-4f13-8235-b7674664ddc5.png",
-//        "https://user-images.githubusercontent.com/90576202/250568264-101026cf-20f9-4f13-8235-b7674664ddc5.png",
-//        "https://user-images.githubusercontent.com/90576202/250568264-101026cf-20f9-4f13-8235-b7674664ddc5.png",
-//        "https://user-images.githubusercontent.com/90576202/250568264-101026cf-20f9-4f13-8235-b7674664ddc5.png",
-//        "https://user-images.githubusercontent.com/90576202/250568264-101026cf-20f9-4f13-8235-b7674664ddc5.png",
-//        "https://user-images.githubusercontent.com/90576202/250568264-101026cf-20f9-4f13-8235-b7674664ddc5.png",
-//    )
-
-
     private val movie = when(args.type) {
         MovieType.NOW_SHOWING.toString() -> {
             repository.getNowShowingMovies().getOrNull(args.id.toInt())
@@ -39,8 +26,6 @@ class MovieDetailsViewModel  @Inject constructor(
             repository.getComingSoonItems().getOrNull(args.id.toInt())
         }
     }
-
-
 
     init {
         _state.update {
