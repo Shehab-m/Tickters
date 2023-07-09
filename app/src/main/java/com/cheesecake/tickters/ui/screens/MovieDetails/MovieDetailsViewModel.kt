@@ -20,31 +20,22 @@ class MovieDetailsViewModel  @Inject constructor(
 
     private val movie = when(args.type) {
         MovieType.NOW_SHOWING -> {
-            repository.getNowShowingMovies().getOrNull(args.id)
+            repository.getNowShowingMovies()[args.id]
         }
         else -> {
-            repository.getComingSoonItems().getOrNull(args.id)
+            repository.getComingSoonItems()[args.id]
         }
     }
 
     init {
         _state.update {
             it.copy(
-                itemsCast = listOf(
-                    movie?.imageUrl!!,
-                    movie.imageUrl,
-                    movie.imageUrl,
-                    movie.imageUrl,
-                    movie.imageUrl,
-                    movie.imageUrl,
-                    movie.imageUrl,
-                    movie.imageUrl,
-                    movie.imageUrl,
-                ),
+                itemsCast = movie.cast,
                 tags = movie.tags,
                 title = movie.title,
                 description = "Professor Albus Dumbledore knows the powerful, dark wizard Gellert Grindelwald is moving to seize control of the wizarding world. Unable to stop him from",
-                imageUrl = movie.imageUrl
+                imageUrl = movie.imageUrl,
+
             )
         }
     }

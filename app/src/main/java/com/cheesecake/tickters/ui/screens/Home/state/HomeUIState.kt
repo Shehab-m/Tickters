@@ -6,5 +6,4 @@ import com.cheesecake.tickters.ui.screens.Home.HomeContentType
 data class HomeUIState(
     val movies: List<Movie> = emptyList(),
     val homeContentType: HomeContentType = HomeContentType.NowShowing,
-
     )
