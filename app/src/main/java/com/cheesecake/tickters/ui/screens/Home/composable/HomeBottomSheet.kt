@@ -10,7 +10,7 @@ import com.cheesecake.tickters.R
 import com.cheesecake.tickters.ui.screens.composable.RowIconText
 import com.cheesecake.tickters.ui.screens.composable.RowTagsChips
 import com.cheesecake.tickters.ui.screens.composable.TextCentered
-import com.cheesecake.tickters.ui.screens.Home.state.HomeUIState
+import com.cheesecake.tickters.viemodel.home.state.HomeUIState
 import com.cheesecake.tickters.ui.theme.Black
 import com.cheesecake.tickters.ui.theme.DarkGrey
 

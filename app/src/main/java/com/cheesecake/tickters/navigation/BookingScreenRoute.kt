@@ -3,7 +3,7 @@ package com.cheesecake.tickters.navigation
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.cheesecake.tickters.ui.screens.BookingScreen.BookingScreen
+import com.cheesecake.tickters.ui.screens.Booking.BookingScreen
 
 fun NavController.navigateToBookingScreen() {
     navigate(ScreensRoute.Booking.route)

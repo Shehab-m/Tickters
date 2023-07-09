@@ -16,7 +16,8 @@ import com.cheesecake.tickters.ui.screens.MovieDetails.composable.BottomSheetMov
 import com.cheesecake.tickters.ui.screens.MovieDetails.composable.ButtonPlay
 import com.cheesecake.tickters.ui.screens.MovieDetails.composable.ImageMovie
 import com.cheesecake.tickters.ui.screens.MovieDetails.composable.MovieDetailsHeader
-import com.cheesecake.tickters.ui.screens.MovieDetails.state.MovieDetailsUIState
+import com.cheesecake.tickters.viemodel.movieDetails.state.MovieDetailsUIState
+import com.cheesecake.tickters.viemodel.movieDetails.MovieDetailsViewModel
 
 @Composable
 fun MovieDetailsScreen(

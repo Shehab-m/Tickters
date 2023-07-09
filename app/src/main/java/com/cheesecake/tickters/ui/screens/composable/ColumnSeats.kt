@@ -5,8 +5,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.cheesecake.tickters.ui.screens.BookingScreen.Composable.RowSeat
-import com.cheesecake.tickters.ui.screens.BookingScreen.state.SeatState
+import com.cheesecake.tickters.ui.screens.Booking.Composable.RowSeat
+import com.cheesecake.tickters.viemodel.booking.state.SeatState
 
 @Composable
 fun ColumnSeats(

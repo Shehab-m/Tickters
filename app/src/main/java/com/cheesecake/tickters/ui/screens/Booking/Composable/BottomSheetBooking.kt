@@ -1,4 +1,4 @@
-package com.cheesecake.tickters.ui.screens.BookingScreen.Composable
+package com.cheesecake.tickters.ui.screens.Booking.Composable
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -17,7 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.cheesecake.tickters.ui.screens.BookingScreen.state.BookingUIState
+import com.cheesecake.tickters.viemodel.booking.state.BookingUIState
 import com.cheesecake.tickters.ui.screens.composable.PrimaryButton
 import com.cheesecake.tickters.ui.theme.TextGrey
 import com.cheesecake.tickters.ui.theme.White

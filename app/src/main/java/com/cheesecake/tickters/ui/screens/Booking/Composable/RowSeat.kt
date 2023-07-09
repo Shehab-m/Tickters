@@ -1,4 +1,4 @@
-package com.cheesecake.tickters.ui.screens.BookingScreen.Composable
+package com.cheesecake.tickters.ui.screens.Booking.Composable
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -12,8 +12,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.cheesecake.tickters.ui.screens.BookingScreen.state.SeatState
-import com.cheesecake.tickters.ui.screens.BookingScreen.state.getNextState
+import com.cheesecake.tickters.viemodel.booking.state.SeatState
+import com.cheesecake.tickters.viemodel.booking.state.getNextState
 
 @Composable
 fun RowSeat(

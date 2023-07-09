@@ -1,7 +1,6 @@
-package com.cheesecake.tickters.ui.screens.BookingScreen.state
+package com.cheesecake.tickters.viemodel.booking.state
 
 import com.cheesecake.tickters.dataSource.Entity.Date
-import com.cheesecake.tickters.ui.screens.BookingScreen.state.SeatState
 
 data class BookingUIState(
     val bookingDateItems: List<Date> = emptyList(),

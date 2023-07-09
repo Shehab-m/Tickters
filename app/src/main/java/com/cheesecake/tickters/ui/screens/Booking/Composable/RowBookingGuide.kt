@@ -1,4 +1,4 @@
-package com.cheesecake.tickters.ui.screens.BookingScreen.Composable
+package com.cheesecake.tickters.ui.screens.Booking.Composable
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

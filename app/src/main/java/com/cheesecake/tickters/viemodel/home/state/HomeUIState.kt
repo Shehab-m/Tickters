@@ -1,4 +1,4 @@
-package com.cheesecake.tickters.ui.screens.Home.state
+package com.cheesecake.tickters.viemodel.home.state
 
 import com.cheesecake.tickters.dataSource.Entity.Movie
 import com.cheesecake.tickters.ui.screens.Home.HomeContentType

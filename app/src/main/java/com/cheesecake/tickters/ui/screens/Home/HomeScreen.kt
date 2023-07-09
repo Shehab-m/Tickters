@@ -27,8 +27,10 @@ import com.cheesecake.tickters.ui.screens.Home.composable.HomeContentHeader
 import com.cheesecake.tickters.ui.screens.Home.composable.ImageBackground
 import com.cheesecake.tickters.ui.screens.Home.composable.MoviePager
 import com.cheesecake.tickters.ui.screens.composable.SpacerVertical60
-import com.cheesecake.tickters.ui.screens.Home.state.HomeUIState
+import com.cheesecake.tickters.viemodel.home.state.HomeUIState
 import com.cheesecake.tickters.ui.theme.White
+import com.cheesecake.tickters.viemodel.home.HomeScreenInteractions
+import com.cheesecake.tickters.viemodel.home.HomeViewModel
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable

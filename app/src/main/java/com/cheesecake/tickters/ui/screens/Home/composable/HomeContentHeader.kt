@@ -8,8 +8,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.cheesecake.tickters.ui.screens.Home.HomeContentType
-import com.cheesecake.tickters.ui.screens.Home.HomeScreenInteractions
-import com.cheesecake.tickters.ui.screens.Home.state.HomeUIState
+import com.cheesecake.tickters.viemodel.home.HomeScreenInteractions
+import com.cheesecake.tickters.viemodel.home.state.HomeUIState
 
 @Composable
 fun HomeContentHeader(state: HomeUIState, viewModel: HomeScreenInteractions) {

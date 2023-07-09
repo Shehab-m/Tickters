@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.cheesecake.tickters.ui.screens.MovieDetails.state.MovieDetailsUIState
+import com.cheesecake.tickters.viemodel.movieDetails.state.MovieDetailsUIState
 import com.cheesecake.tickters.ui.screens.composable.PrimaryButton
 import com.cheesecake.tickters.ui.screens.composable.RowTagsChips
 import com.cheesecake.tickters.ui.screens.composable.TextCentered

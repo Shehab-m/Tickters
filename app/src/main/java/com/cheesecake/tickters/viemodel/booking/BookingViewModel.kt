@@ -1,10 +1,10 @@
-package com.cheesecake.tickters.ui.screens.BookingScreen
+package com.cheesecake.tickters.viemodel.booking
 
 import com.cheesecake.tickters.dataSource.Entity.Date
 import com.cheesecake.tickters.base.BaseViewModel
-import com.cheesecake.tickters.ui.screens.BookingScreen.state.BookingUIState
-import com.cheesecake.tickters.ui.screens.BookingScreen.state.SeatState
-import com.cheesecake.tickters.ui.screens.BookingScreen.state.getNextState
+import com.cheesecake.tickters.viemodel.booking.state.BookingUIState
+import com.cheesecake.tickters.viemodel.booking.state.SeatState
+import com.cheesecake.tickters.viemodel.booking.state.getNextState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.update
 import javax.inject.Inject

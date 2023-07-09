@@ -12,7 +12,7 @@ import androidx.compose.ui.draw.blur
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
-import com.cheesecake.tickters.ui.screens.Home.state.HomeUIState
+import com.cheesecake.tickters.viemodel.home.state.HomeUIState
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable

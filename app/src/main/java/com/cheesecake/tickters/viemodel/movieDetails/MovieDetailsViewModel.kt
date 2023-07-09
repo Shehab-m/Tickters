@@ -1,11 +1,11 @@
-package com.cheesecake.tickters.ui.screens.MovieDetails
+package com.cheesecake.tickters.viemodel.movieDetails
 
 import androidx.lifecycle.SavedStateHandle
 import com.cheesecake.tickters.navigation.MovieDetailsArgs
 import com.cheesecake.tickters.repository.IMoviesRepository
 import com.cheesecake.tickters.dataSource.Entity.MovieType
 import com.cheesecake.tickters.base.BaseViewModel
-import com.cheesecake.tickters.ui.screens.MovieDetails.state.MovieDetailsUIState
+import com.cheesecake.tickters.viemodel.movieDetails.state.MovieDetailsUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.update
 import javax.inject.Inject

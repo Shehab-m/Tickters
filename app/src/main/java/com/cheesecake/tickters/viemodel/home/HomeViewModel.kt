@@ -1,8 +1,9 @@
-package com.cheesecake.tickters.ui.screens.Home
+package com.cheesecake.tickters.viemodel.home
 
 import com.cheesecake.tickters.repository.IMoviesRepository
 import com.cheesecake.tickters.base.BaseViewModel
-import com.cheesecake.tickters.ui.screens.Home.state.HomeUIState
+import com.cheesecake.tickters.ui.screens.Home.HomeContentType
+import com.cheesecake.tickters.viemodel.home.state.HomeUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.update
 import javax.inject.Inject
