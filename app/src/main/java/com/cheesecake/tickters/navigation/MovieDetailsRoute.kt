@@ -6,7 +6,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.cheesecake.tickters.repository.Entity.MovieType
+import com.cheesecake.tickters.dataSource.Entity.MovieType
 import com.cheesecake.tickters.navigation.MovieDetailsArgs.Companion.ID_ARG
 import com.cheesecake.tickters.navigation.MovieDetailsArgs.Companion.TYPE_ARG
 import com.cheesecake.tickters.ui.screens.MovieDetails.MovieDetailsScreen

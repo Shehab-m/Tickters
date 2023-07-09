@@ -1,4 +1,4 @@
-package com.cheesecake.tickters.repository.Entity
+package com.cheesecake.tickters.dataSource.Entity
 
 data class Date(
     val date: String,

@@ -1,6 +1,6 @@
 package com.cheesecake.tickters.ui.screens.BookingScreen.state
 
-import com.cheesecake.tickters.repository.Entity.Date
+import com.cheesecake.tickters.dataSource.Entity.Date
 import com.cheesecake.tickters.ui.screens.BookingScreen.state.SeatState
 
 data class BookingUIState(

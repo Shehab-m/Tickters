@@ -20,7 +20,7 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
-import com.cheesecake.tickters.repository.Entity.MovieType
+import com.cheesecake.tickters.dataSource.Entity.MovieType
 import com.cheesecake.tickters.ui.screens.Home.state.HomeUIState
 
 

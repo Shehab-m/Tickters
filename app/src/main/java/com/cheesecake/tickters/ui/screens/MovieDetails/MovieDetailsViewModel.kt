@@ -3,7 +3,7 @@ package com.cheesecake.tickters.ui.screens.MovieDetails
 import androidx.lifecycle.SavedStateHandle
 import com.cheesecake.tickters.navigation.MovieDetailsArgs
 import com.cheesecake.tickters.repository.IMoviesRepository
-import com.cheesecake.tickters.repository.Entity.MovieType
+import com.cheesecake.tickters.dataSource.Entity.MovieType
 import com.cheesecake.tickters.base.BaseViewModel
 import com.cheesecake.tickters.ui.screens.MovieDetails.state.MovieDetailsUIState
 import dagger.hilt.android.lifecycle.HiltViewModel

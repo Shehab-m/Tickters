@@ -1,6 +1,6 @@
 package com.cheesecake.tickters.ui.screens.Home.state
 
-import com.cheesecake.tickters.repository.Entity.Movie
+import com.cheesecake.tickters.dataSource.Entity.Movie
 import com.cheesecake.tickters.ui.screens.Home.HomeContentType
 
 data class HomeUIState(

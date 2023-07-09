@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.cheesecake.tickters.repository.Entity.MovieType
+import com.cheesecake.tickters.dataSource.Entity.MovieType
 import com.cheesecake.tickters.navigation.navigateToMovieDetails
 import com.cheesecake.tickters.ui.screens.Home.composable.BottomSheetHome
 import com.cheesecake.tickters.ui.screens.Home.composable.HomeContentHeader

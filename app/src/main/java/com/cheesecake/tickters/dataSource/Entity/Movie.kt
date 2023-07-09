@@ -1,4 +1,4 @@
-package com.cheesecake.tickters.repository.Entity
+package com.cheesecake.tickters.dataSource.Entity
 
 data class Movie(
     val imageUrl: String,
@@ -6,5 +6,5 @@ data class Movie(
     val tags: List<String>,
     val duration: String,
     val type: MovieType,
-    val cast: List<String>
+    val cast: List<String>,
 )
