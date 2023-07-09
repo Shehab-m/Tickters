@@ -5,19 +5,18 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import com.cheesecake.tickters.R
 
 @Composable
-fun ImageHeaderCinema(modifier: Modifier = Modifier) {
+fun ImageHeader(painter: Painter, modifier: Modifier = Modifier) {
     Image(
-        painter = painterResource(id = R.drawable.img_2),
+        painter = painter,
         contentDescription = "Cinema",
         contentScale = ContentScale.FillBounds,
         modifier = modifier
             .fillMaxWidth()
-            .fillMaxHeight(.12f)
+            .fillMaxHeight(.15f)
     )
 }
 //

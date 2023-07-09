@@ -11,12 +11,10 @@ import com.cheesecake.tickters.screens.Home.HomeScreen
 @Composable
 fun NavGraph(navController: NavHostController) {
     NavHost(navController = navController, startDestination = ScreensRoute.Home.route) {
-        composable(route = ScreensRoute.Home.route) {
-            HomeScreen(navController)
-        }
-        composable(route = ScreensRoute.Tickets.route) {
-            BookingScreen(navController)
-        }
+        homeScreenRoute(navController)
+        bookingScreenRoute(navController)
         movieDetailsRoute(navController)
     }
 }
+
+

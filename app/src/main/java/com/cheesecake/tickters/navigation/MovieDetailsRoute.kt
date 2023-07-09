@@ -9,8 +9,9 @@ import androidx.navigation.navArgument
 import com.cheesecake.tickters.navigation.MovieDetailsArgs.Companion.ID_ARG
 import com.cheesecake.tickters.navigation.MovieDetailsArgs.Companion.TYPE_ARG
 import com.cheesecake.tickters.screens.MovieDetails.MovieDetailsScreen
+import com.cheesecake.tickters.viewmodel.model.MovieType
 
-fun NavController.navigateTOMovieDetails(id: Int,type:String) {
+fun NavController.navigateToMovieDetails(id: Int, type:MovieType) {
     navigate("$ROUTE/$id/$type")
 }
 
@@ -20,20 +21,18 @@ fun NavGraphBuilder.movieDetailsRoute(navController: NavController) {
         route = "$ROUTE/{$ID_ARG}/{$TYPE_ARG}",
 
         arguments = listOf(
-            navArgument(ID_ARG) { NavType.StringType },
-            navArgument(TYPE_ARG) { NavType.StringType },
+            navArgument(ID_ARG) { NavType.IntType },
+            navArgument(TYPE_ARG) { NavType.EnumType(MovieType::class.java) },
         )
     ) { MovieDetailsScreen(navController) }
 }
 
 class MovieDetailsArgs(savedStateHandle: SavedStateHandle) {
-    val id: String = savedStateHandle[ID_ARG] ?: "0"
-    val type: String = savedStateHandle[TYPE_ARG] ?: ""
+    val id: Int = checkNotNull(savedStateHandle[ID_ARG])
+    val type: MovieType = savedStateHandle.get<MovieType>(TYPE_ARG) ?: MovieType.NOW_SHOWING
 
     companion object {
         const val ID_ARG = "id"
         const val TYPE_ARG = "type"
     }
 }
-
-

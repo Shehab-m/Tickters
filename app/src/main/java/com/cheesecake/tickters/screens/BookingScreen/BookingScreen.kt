@@ -24,10 +24,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.cheesecake.tickters.R
-import com.cheesecake.tickters.screens.BookingScreen.Composable.ImageHeaderCinema
+import com.cheesecake.tickters.screens.BookingScreen.Composable.ImageHeader
 import com.cheesecake.tickters.screens.composable.ButtonExit
 import com.cheesecake.tickters.screens.BookingScreen.Composable.CardDateItem
 import com.cheesecake.tickters.screens.BookingScreen.Composable.CardTimeItem
@@ -39,13 +40,12 @@ import com.cheesecake.tickters.ui.theme.MediumGrey
 import com.cheesecake.tickters.ui.theme.Orange
 import com.cheesecake.tickters.ui.theme.TextGrey
 import com.cheesecake.tickters.ui.theme.White
-import com.cheesecake.tickters.viewmodel.BookingScreenInteractions
 import com.cheesecake.tickters.viewmodel.BookingViewModel
 import com.cheesecake.tickters.viewmodel.state.BookingUIState
 
 @Composable
 fun BookingScreen(
-    navController: NavHostController,
+    navController: NavController,
     viewModel: BookingViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsState()
@@ -64,8 +64,8 @@ fun BookingContent(
     ) {
         val (bottomSheet, imageBanner, rowGuide, rowSeats, buttonExit) = createRefs()
 
-        ImageHeaderCinema(modifier = Modifier.constrainAs(imageBanner) {
-            top.linkTo(parent.top, 58.dp)
+        ImageHeader(painterResource(id = R.drawable.img_3),modifier = Modifier.constrainAs(imageBanner) {
+            top.linkTo(parent.top, 62.dp)
         })
 
 

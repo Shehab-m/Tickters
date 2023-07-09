@@ -1,4 +1,4 @@
-package com.cheesecake.tickters.screens.Home
+package com.cheesecake.tickters.screens.Home.composable
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -20,27 +20,25 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
-import com.cheesecake.tickters.viewmodel.model.Movie
+import com.cheesecake.tickters.viewmodel.model.MovieType
+import com.cheesecake.tickters.viewmodel.state.HomeUIState
 
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun Carousel(
+fun MoviePager(
     pagerState: PagerState,
-    items: List<Movie>,
+    state: HomeUIState,
     modifier: Modifier = Modifier,
-    onShowingItem: (Movie, Int) -> Unit,
-    onClickItem: () -> Unit
+    onClickMovie: (Int,MovieType) -> Unit
     ) {
     HorizontalPager(
         state = pagerState,
-        pageCount = items.size,
+        pageCount = state.movies.size,
         contentPadding = PaddingValues(horizontal = 64.dp),
         modifier = modifier
     ) { page ->
-        val movie = items[page % items.size]
-
-        onShowingItem(items[pagerState.currentPage],pagerState.currentPage)
+        val movie = state.movies[page % state.movies.size]
 
         val animatedScale by animateFloatAsState(
             targetValue = if (page == pagerState.currentPage) 1f else 0.8f,
@@ -57,7 +55,7 @@ fun Carousel(
                 .aspectRatio(3 / 4f)
                 .scale(animatedScale)
                 .clip(MaterialTheme.shapes.extraLarge)
-                .clickable {onClickItem.invoke() }
+                .clickable {onClickMovie(page,state.movies[page].type) }
         )
     }
 }

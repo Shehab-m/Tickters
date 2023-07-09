@@ -1,5 +1,6 @@
 package com.cheesecake.tickters.navigation
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -21,7 +22,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
-import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.cheesecake.tickters.ui.theme.Orange
@@ -32,7 +32,7 @@ fun BottomNavBar(navController: NavHostController) {
     val screens = listOf(
         ScreensRoute.Home,
         ScreensRoute.Search,
-        ScreensRoute.Tickets,
+        ScreensRoute.Booking,
         ScreensRoute.Profile,
 
         )
@@ -49,17 +49,11 @@ fun BottomNavBar(navController: NavHostController) {
             fun onClick() {
                 when (screen.route) {
                     ScreensRoute.Home.route -> {
-                        navController.navigate(ScreensRoute.Home.route) {
-                            popUpTo(navController.graph.findStartDestination().id)
-                            launchSingleTop = true
-                        }
+                        navController.navigateToHomeScreen()
                     }
 
-                    ScreensRoute.Tickets.route -> {
-                        navController.navigate(ScreensRoute.Tickets.route) {
-                            popUpTo(navController.graph.findStartDestination().id)
-                            launchSingleTop = true
-                        }
+                    ScreensRoute.Booking.route -> {
+                        navController.navigateToBookingScreen()
                     }
 
                     else -> {}
@@ -68,7 +62,6 @@ fun BottomNavBar(navController: NavHostController) {
             AddItem(
                 screen = screen,
                 currentDestination = currentDestination,
-                navController = navController,
                 onClick = ::onClick
             )
         }
@@ -80,12 +73,12 @@ fun BottomNavBar(navController: NavHostController) {
 fun RowScope.AddItem(
     screen: ScreensRoute,
     currentDestination: NavDestination?,
-    navController: NavHostController,
     onClick: () -> Unit
 ) {
     val selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true
-    val background = if (selected) Orange else Color.Transparent
-    val contentColor = if (selected) Color.White else Color.Black
+    val background by animateColorAsState(targetValue = if (selected) Orange else Color.Transparent)
+    val contentColor by animateColorAsState(targetValue = if (selected) Color.White else Color.Black)
+
     Box(
         modifier = Modifier
             .size(50.dp)

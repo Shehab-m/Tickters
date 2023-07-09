@@ -19,11 +19,11 @@ class MovieDetailsViewModel  @Inject constructor(
     private val args = MovieDetailsArgs(savedStateHandle)
 
     private val movie = when(args.type) {
-        MovieType.NOW_SHOWING.toString() -> {
-            repository.getNowShowingMovies().getOrNull(args.id.toInt())
+        MovieType.NOW_SHOWING -> {
+            repository.getNowShowingMovies().getOrNull(args.id)
         }
         else -> {
-            repository.getComingSoonItems().getOrNull(args.id.toInt())
+            repository.getComingSoonItems().getOrNull(args.id)
         }
     }
 
