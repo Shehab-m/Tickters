@@ -1,6 +1,6 @@
 package com.cheesecake.tickters.repository
 
-import com.cheesecake.tickters.viewmodel.model.Movie
+import com.cheesecake.tickters.Entity.Movie
 
 interface IMoviesRepository {
 

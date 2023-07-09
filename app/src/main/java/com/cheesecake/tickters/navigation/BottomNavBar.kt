@@ -59,7 +59,7 @@ fun BottomNavBar(navController: NavHostController) {
                     else -> {}
                 }
             }
-            AddItem(
+            AddRoute(
                 screen = screen,
                 currentDestination = currentDestination,
                 onClick = ::onClick
@@ -70,7 +70,7 @@ fun BottomNavBar(navController: NavHostController) {
 }
 
 @Composable
-fun RowScope.AddItem(
+fun RowScope.AddRoute(
     screen: ScreensRoute,
     currentDestination: NavDestination?,
     onClick: () -> Unit

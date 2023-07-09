@@ -3,17 +3,16 @@ package com.cheesecake.tickters.navigation
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.cheesecake.tickters.screens.Home.HomeScreen
+import com.cheesecake.tickters.ui.screens.Home.HomeScreen
 
-private const val ROUTE = "HomeScreen"
 
 fun NavController.navigateToHomeScreen() {
-    navigate(ROUTE)
+    navigate(ScreensRoute.Home.route)
 }
 
 fun NavGraphBuilder.homeScreenRoute(navController: NavController) {
     composable(
-        route = ROUTE
+        route = ScreensRoute.Home.route
 
     ) { HomeScreen(navController) }
 }

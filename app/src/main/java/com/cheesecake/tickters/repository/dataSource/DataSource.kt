@@ -1,7 +1,7 @@
 package com.cheesecake.tickters.repository.dataSource
 
-import com.cheesecake.tickters.viewmodel.model.Movie
-import com.cheesecake.tickters.viewmodel.model.MovieType
+import com.cheesecake.tickters.Entity.Movie
+import com.cheesecake.tickters.Entity.MovieType
 
 object DataSource {
 

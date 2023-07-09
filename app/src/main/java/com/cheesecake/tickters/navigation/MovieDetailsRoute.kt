@@ -6,12 +6,12 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.cheesecake.tickters.Entity.MovieType
 import com.cheesecake.tickters.navigation.MovieDetailsArgs.Companion.ID_ARG
 import com.cheesecake.tickters.navigation.MovieDetailsArgs.Companion.TYPE_ARG
-import com.cheesecake.tickters.screens.MovieDetails.MovieDetailsScreen
-import com.cheesecake.tickters.viewmodel.model.MovieType
+import com.cheesecake.tickters.ui.screens.MovieDetails.MovieDetailsScreen
 
-fun NavController.navigateToMovieDetails(id: Int, type:MovieType) {
+fun NavController.navigateToMovieDetails(id: Int, type: MovieType) {
     navigate("$ROUTE/$id/$type")
 }
 
