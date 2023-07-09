@@ -9,7 +9,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.cheesecake.tickters.ui.screens.MovieDetails.ImageActorItem
 
 @Composable
 fun RowItemsCast(items: List<String>) {
@@ -21,7 +20,7 @@ fun RowItemsCast(items: List<String>) {
         contentPadding = PaddingValues(horizontal = 24.dp),
     ) {
         items(items) {
-            ImageActorItem(it)
+            ImageCastItem(it)
         }
     }
 }

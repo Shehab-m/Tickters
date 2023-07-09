@@ -1,4 +1,4 @@
-package com.cheesecake.tickters.ui.screens.MovieDetails
+package com.cheesecake.tickters.ui.screens.MovieDetails.composable
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.size
@@ -11,9 +11,8 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 
 @Composable
-fun ImageActorItem(url: String) {
-
-
+fun ImageCastItem(url: String) {
+    
     Image(
         painter = rememberAsyncImagePainter(model = url),
         contentDescription = "Actor/Actress",

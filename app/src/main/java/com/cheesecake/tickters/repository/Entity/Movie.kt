@@ -1,4 +1,4 @@
-package com.cheesecake.tickters.Entity
+package com.cheesecake.tickters.repository.Entity
 
 data class Movie(
     val imageUrl: String,

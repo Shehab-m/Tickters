@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.cheesecake.tickters.R
 import com.cheesecake.tickters.ui.screens.composable.CreateIndication
 import com.cheesecake.tickters.ui.screens.composable.CreateMutableInteractionSource
-import com.cheesecake.tickters.ui.state.SeatState
+import com.cheesecake.tickters.ui.screens.BookingScreen.state.SeatState
 import com.cheesecake.tickters.ui.theme.Orange
 import com.cheesecake.tickters.ui.theme.White
 

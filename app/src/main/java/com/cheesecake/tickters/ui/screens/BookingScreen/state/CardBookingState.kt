@@ -1,4 +1,4 @@
-package com.cheesecake.tickters.ui.state
+package com.cheesecake.tickters.ui.screens.BookingScreen.state
 
 enum class CardState {
     SELECTED, NOT_SELECTED;

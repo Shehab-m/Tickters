@@ -1,4 +1,4 @@
-package com.cheesecake.tickters.ui.state
+package com.cheesecake.tickters.ui.screens.MovieDetails.state
 
 data class MovieDetailsUIState (
     val itemsCast: List<String> = emptyList(),

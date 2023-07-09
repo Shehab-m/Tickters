@@ -2,7 +2,7 @@ package com.cheesecake.tickters.ui.screens.Home
 
 import com.cheesecake.tickters.repository.IMoviesRepository
 import com.cheesecake.tickters.base.BaseViewModel
-import com.cheesecake.tickters.ui.state.HomeUIState
+import com.cheesecake.tickters.ui.screens.Home.state.HomeUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.update
 import javax.inject.Inject

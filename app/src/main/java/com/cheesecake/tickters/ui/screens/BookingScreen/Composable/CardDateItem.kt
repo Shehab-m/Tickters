@@ -20,8 +20,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.cheesecake.tickters.ui.screens.composable.TextCenteredInCard
-import com.cheesecake.tickters.ui.state.CardState
-import com.cheesecake.tickters.ui.state.nextState
+import com.cheesecake.tickters.ui.screens.BookingScreen.state.CardState
+import com.cheesecake.tickters.ui.screens.BookingScreen.state.nextState
 import com.cheesecake.tickters.ui.theme.DarkGrey
 import com.cheesecake.tickters.ui.theme.White
 

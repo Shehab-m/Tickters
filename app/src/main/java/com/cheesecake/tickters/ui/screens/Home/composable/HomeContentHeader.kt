@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.cheesecake.tickters.ui.screens.Home.HomeContentType
 import com.cheesecake.tickters.ui.screens.Home.HomeScreenInteractions
-import com.cheesecake.tickters.ui.state.HomeUIState
+import com.cheesecake.tickters.ui.screens.Home.state.HomeUIState
 
 @Composable
 fun HomeContentHeader(state: HomeUIState, viewModel: HomeScreenInteractions) {

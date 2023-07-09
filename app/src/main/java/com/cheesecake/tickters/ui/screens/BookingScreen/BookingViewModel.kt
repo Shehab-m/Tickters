@@ -1,11 +1,10 @@
 package com.cheesecake.tickters.ui.screens.BookingScreen
 
+import com.cheesecake.tickters.repository.Entity.Date
 import com.cheesecake.tickters.base.BaseViewModel
-import com.cheesecake.tickters.screens.BookingScreen.BookingScreenInteractions
-import com.cheesecake.tickters.ui.state.BookingUIState
-import com.cheesecake.tickters.ui.state.SeatState
-import com.cheesecake.tickters.viewmodel.state.DateUIState
-import com.cheesecake.tickters.ui.state.getNextState
+import com.cheesecake.tickters.ui.screens.BookingScreen.state.BookingUIState
+import com.cheesecake.tickters.ui.screens.BookingScreen.state.SeatState
+import com.cheesecake.tickters.ui.screens.BookingScreen.state.getNextState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.update
 import javax.inject.Inject
@@ -15,15 +14,15 @@ class BookingViewModel @Inject constructor() : BaseViewModel<BookingUIState>(Boo
     BookingScreenInteractions {
 
     private val dateItems = listOf(
-        DateUIState("11", "sun"),
-        DateUIState("12", "mon"),
-        DateUIState("13", "tue"),
-        DateUIState("14", "wed"),
-        DateUIState("15", "thu"),
-        DateUIState("16", "fri"),
-        DateUIState("17", "sat"),
-        DateUIState("18", "sun"),
-        DateUIState("19", "mon"),
+        Date("11", "sun"),
+        Date("12", "mon"),
+        Date("13", "tue"),
+        Date("14", "wed"),
+        Date("15", "thu"),
+        Date("16", "fri"),
+        Date("17", "sat"),
+        Date("18", "sun"),
+        Date("19", "mon"),
 
         )
     private val timeItems = listOf("10:00", "13:00", "15:00", "18:00", "20:00", "24:00", "02:00", "04:00", "06:00")
@@ -36,11 +35,11 @@ class BookingViewModel @Inject constructor() : BaseViewModel<BookingUIState>(Boo
                 price = 100.00,
                 availableTickets = 4,
                 seats = listOf(
-                    Pair(SeatState.Selected, SeatState.Available),
+                    Pair(SeatState.Taken, SeatState.Taken),
                     Pair(SeatState.Available, SeatState.Taken),
-                    Pair(SeatState.Selected, SeatState.Taken),
+                    Pair(SeatState.Available, SeatState.Taken),
                     Pair(SeatState.Taken, SeatState.Available),
-                    Pair(SeatState.Available, SeatState.Selected),
+                    Pair(SeatState.Available, SeatState.Available),
                 )
             )
         }

@@ -17,45 +17,30 @@ import com.cheesecake.tickters.ui.theme.OnBackgroundColor
 import com.cheesecake.tickters.ui.theme.DarkGrey
 
 @Composable
-fun TextWithIcon(
+fun RowTimer(
     text: String,
     image: Painter,
-    imageAlignment: ImageAlignment = ImageAlignment.Start,
     modifier: Modifier = Modifier,
 ) {
     Row(
         modifier = modifier.background(DarkGrey, shape = RoundedCornerShape(16.dp)),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        if (imageAlignment == ImageAlignment.Start) {
-            IconText(image)
-        }
+
+        Icon(
+            painter = image,
+            contentDescription = null,
+            modifier = Modifier
+                .padding(start = 8.dp)
+                .size(16.dp),
+            tint = MediumGrey,
+        )
+
         Text(
             text = text, color = OnBackgroundColor,
             modifier = modifier.padding(top = 4.dp, end = 8.dp, start = 8.dp, bottom = 4.dp),
         )
-        if (imageAlignment == ImageAlignment.End) {
-            IconText(image)
-        }
     }
 }
 
-@Composable
-private fun IconText(
-    image: Painter,
-) {
-    Icon(
-        painter = image,
-        contentDescription = null,
-        modifier = Modifier
-            .padding(start = 8.dp)
-            .size(16.dp),
-        tint = MediumGrey,
-    )
-}
-
-
-enum class ImageAlignment {
-    Start, End
-}
 

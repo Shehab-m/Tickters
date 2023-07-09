@@ -20,14 +20,14 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.cheesecake.tickters.Entity.MovieType
+import com.cheesecake.tickters.repository.Entity.MovieType
 import com.cheesecake.tickters.navigation.navigateToMovieDetails
 import com.cheesecake.tickters.ui.screens.Home.composable.BottomSheetHome
 import com.cheesecake.tickters.ui.screens.Home.composable.HomeContentHeader
 import com.cheesecake.tickters.ui.screens.Home.composable.ImageBackground
 import com.cheesecake.tickters.ui.screens.Home.composable.MoviePager
 import com.cheesecake.tickters.ui.screens.composable.SpacerVertical60
-import com.cheesecake.tickters.ui.state.HomeUIState
+import com.cheesecake.tickters.ui.screens.Home.state.HomeUIState
 import com.cheesecake.tickters.ui.theme.White
 
 @OptIn(ExperimentalFoundationApi::class)
