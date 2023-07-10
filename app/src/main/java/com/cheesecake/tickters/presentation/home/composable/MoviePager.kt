@@ -20,6 +20,7 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
+import com.cheesecake.tickters.dataSource.Entity.Movie
 import com.cheesecake.tickters.dataSource.Entity.MovieType
 import com.cheesecake.tickters.presentation.home.viewModel.state.HomeUIState
 
@@ -28,17 +29,17 @@ import com.cheesecake.tickters.presentation.home.viewModel.state.HomeUIState
 @Composable
 fun MoviePager(
     pagerState: PagerState,
-    state: HomeUIState,
+    movies: List<Movie>,
     modifier: Modifier = Modifier,
     onClickMovie: (Int, MovieType) -> Unit
     ) {
     HorizontalPager(
         state = pagerState,
-        pageCount = state.movies.size,
+        pageCount = movies.size,
         contentPadding = PaddingValues(horizontal = 64.dp),
         modifier = modifier
     ) { page ->
-        val movie = state.movies[page % state.movies.size]
+        val movie = movies[page % movies.size]
 
         val animatedScale by animateFloatAsState(
             targetValue = if (page == pagerState.currentPage) 1f else 0.8f,
@@ -55,7 +56,7 @@ fun MoviePager(
                 .aspectRatio(3 / 4f)
                 .scale(animatedScale)
                 .clip(MaterialTheme.shapes.extraLarge)
-                .clickable {onClickMovie(page,state.movies[page].type) }
+                .clickable {onClickMovie(page,movies[page].type) }
         )
     }
 }
