@@ -9,7 +9,7 @@ import androidx.navigation.navArgument
 import com.cheesecake.tickters.dataSource.Entity.MovieType
 import com.cheesecake.tickters.navigation.MovieDetailsArgs.Companion.ID_ARG
 import com.cheesecake.tickters.navigation.MovieDetailsArgs.Companion.TYPE_ARG
-import com.cheesecake.tickters.ui.screens.MovieDetails.MovieDetailsScreen
+import com.cheesecake.tickters.presentation.movieDetails.MovieDetailsScreen
 
 fun NavController.navigateToMovieDetails(id: Int, type: MovieType) {
     navigate("$ROUTE/$id/$type")

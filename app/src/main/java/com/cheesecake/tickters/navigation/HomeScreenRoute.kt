@@ -3,7 +3,7 @@ package com.cheesecake.tickters.navigation
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.cheesecake.tickters.ui.screens.Home.HomeScreen
+import com.cheesecake.tickters.presentation.home.HomeScreen
 
 
 fun NavController.navigateToHomeScreen() {
