@@ -12,7 +12,7 @@ import com.cheesecake.tickters.presentation.home.viewModel.HomeScreenInteraction
 import com.cheesecake.tickters.presentation.home.viewModel.state.HomeUIState
 
 @Composable
-fun HomeContentHeader(state: HomeUIState, viewModel: HomeScreenInteractions) {
+fun HomeContentHeader(contentType: HomeContentType, viewModel: HomeScreenInteractions) {
     Row(
         horizontalArrangement = Arrangement.Center,
         modifier = Modifier
@@ -22,13 +22,13 @@ fun HomeContentHeader(state: HomeUIState, viewModel: HomeScreenInteractions) {
 
         ButtonHomeContent(
             buttonText = "Now Showing",
-            selected = state.homeContentType == HomeContentType.NowShowing,
+            selected = contentType == HomeContentType.NowShowing,
             onClick = { viewModel.updateHomeContent(HomeContentType.NowShowing) }
         )
 
         ButtonHomeContent(
             buttonText = "Coming Soon",
-            selected = state.homeContentType == HomeContentType.ComingSoon,
+            selected = contentType == HomeContentType.ComingSoon,
             onClick = { viewModel.updateHomeContent(HomeContentType.ComingSoon) }
         )
 

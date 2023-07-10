@@ -24,7 +24,7 @@ import com.cheesecake.tickters.dataSource.Entity.MovieType
 import com.cheesecake.tickters.navigation.navigateToMovieDetails
 import com.cheesecake.tickters.presentation.home.composable.BottomSheetHome
 import com.cheesecake.tickters.presentation.home.composable.HomeContentHeader
-import com.cheesecake.tickters.presentation.home.composable.ImageBackground
+import com.cheesecake.tickters.presentation.home.composable.BackgroundImage
 import com.cheesecake.tickters.presentation.home.composable.MoviePager
 import com.cheesecake.tickters.presentation.composable.SpacerVertical60
 import com.cheesecake.tickters.presentation.home.viewModel.state.HomeUIState
@@ -64,10 +64,10 @@ fun HomeContent(
 
         Box {
 
-            ImageBackground(state, pagerState)
+            BackgroundImage(state.movies, pagerState.currentPage)
 
             SpacerVertical60()
-            HomeContentHeader(state, viewModel)
+            HomeContentHeader(state.homeContentType, viewModel)
 
             MoviePager(
                 modifier = Modifier
@@ -80,7 +80,7 @@ fun HomeContent(
 
         }
 
-        BottomSheetHome(state, pagerState.currentPage)
+        BottomSheetHome(state.movies, pagerState.currentPage)
     }
 }
 
